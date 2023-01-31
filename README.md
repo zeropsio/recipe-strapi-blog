@@ -20,7 +20,7 @@ services:
     priority: 1
   - hostname: api
     type: nodejs@16
-    buildFromGit: https://github.com/zeropsio/recipe-strapi@main
+    buildFromGit: https://github.com/zeropsio/recipe-strapi-blog@main
     enableSubdomainAccess: true
     envVariables:
       DATABASE_HOST: "${db_hostname}"
