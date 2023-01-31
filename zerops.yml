@@ -1,0 +1,18 @@
+api:
+  build:
+    base:
+      - nodejs@16
+    build:
+      - yarn
+      - yarn run build
+    deploy:
+      - ./
+    cache:
+      - node_modules
+  run:
+    init:
+      - |
+        if ! zcli bucket s3 create $STORAGE_HOSTNAME $STORAGE_BUCKET_NAME --x-amz-acl=private; then
+          echo "The bucket was not created, you have to do it manually!"
+        fi
+    start: yarn start
